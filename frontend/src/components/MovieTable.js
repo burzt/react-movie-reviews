@@ -1,8 +1,23 @@
 import { useState, useEffect } from "react";
 import Table from "react-bootstrap/Table";
+import { Star } from "react-bootstrap-icons";
+import ReactTextCollapse from "react-text-collapse";
 import axios from "axios";
 require("dotenv").config();
 const tmdbApiKey = process.env.REACT_APP_TMDB_API_KEY;
+
+const TEXT_COLLAPSE_OPTIONS = {
+  collapse: false, // default state when component rendered
+  collapseText: "...show more", // text to show when collapsed
+  expandText: "show less", // text to show when expanded
+  minHeight: 100, // component height when closed
+  maxHeight: 250, // expanded to
+  textStyle: {
+    // pass the css for the collapseText and expandText here
+    color: "blue",
+    fontSize: "12px",
+  },
+};
 
 const MovieTable = () => {
   const [data, setData] = useState([]);
@@ -18,6 +33,11 @@ const MovieTable = () => {
           "http://image.tmdb.org/t/p/w500/" +
           response.data.results[0].poster_path;
         setData([...data]);
+      })
+      .catch((error) => {
+        //placeholder image
+        movie.poster = "https://via.placeholder.com/75x100";
+        setData([...data]);
       });
   };
 
@@ -25,6 +45,7 @@ const MovieTable = () => {
     //fetching data from the server
     axios.get("http://localhost:4000").then((response) => {
       setData([...response.data]);
+      // updating each movie with a poster from the tmdb api
       response.data.forEach((movie) => {
         fetchPoster(movie);
       }, []);
@@ -54,6 +75,7 @@ const MovieTable = () => {
             <tr>
               <td>
                 <img
+                  className="rounded center-block img-responsive"
                   src={movie.poster}
                   alt={`<${movie.poster} poster>`}
                   width="75"
@@ -61,9 +83,22 @@ const MovieTable = () => {
                 />
               </td>
               <td>{movie.name}</td>
-              <td>{movie.title}</td>
-              <td>{movie.rating}</td>
-              <td>{movie.comment}</td>
+              <td className="">{movie.title}</td>
+              <td>
+                <div className="d-flex flex-row align-items-center">
+                  {movie.rating}
+                  <Star size="14" color="#ffc107" />
+                </div>
+              </td>
+              <td>
+                {movie.comment.length > 250 ? (
+                  <ReactTextCollapse options={TEXT_COLLAPSE_OPTIONS}>
+                    {movie.comment}
+                  </ReactTextCollapse>
+                ) : (
+                  <div>{movie.comment}</div>
+                )}
+              </td>
             </tr>
           ))
         )}

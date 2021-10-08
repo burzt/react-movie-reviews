@@ -1,0 +1,8 @@
+{
+  "name": "favorite-movie-visualizer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/AaronElam/favorite-movie-visualizer.git",
+  "author": "AaronElam <speztra97@gmail.com>",
+  "license": "MIT"
+}

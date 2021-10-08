@@ -33,6 +33,11 @@ const MovieTable = () => {
           "http://image.tmdb.org/t/p/w500/" +
           response.data.results[0].poster_path;
         setData([...data]);
+      })
+      .catch((error) => {
+        //placeholder image
+        movie.poster = "https://via.placeholder.com/75x100";
+        setData([...data]);
       });
   };
 
@@ -86,7 +91,7 @@ const MovieTable = () => {
                 </div>
               </td>
               <td>
-                {movie.comment.length > 100 ? (
+                {movie.comment.length > 250 ? (
                   <ReactTextCollapse options={TEXT_COLLAPSE_OPTIONS}>
                     {movie.comment}
                   </ReactTextCollapse>

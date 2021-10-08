@@ -7,6 +7,7 @@ const express = require("express");
 
 // Alows Cross Origin Resource Sharing
 const cors = require("cors");
+const { json } = require("express");
 
 // We initialize the express app
 const app = express();
@@ -28,10 +29,22 @@ const data = [];
 const jsonsInDir = fs
   .readdirSync("./reviews")
   .filter((file) => path.extname(file) === ".json");
+
 jsonsInDir.forEach((file) => {
   const fileData = fs.readFileSync(`./reviews/${file}`, "utf8");
   const jsonData = JSON.parse(fileData.toString());
-  data.push(jsonData);
+  // sanitizing the data
+  if (
+    jsonData.name &&
+    jsonData.title &&
+    jsonData.rating &&
+    jsonData.comment &&
+    Object.keys(jsonData).length === 4
+  ) {
+    data.push(jsonData);
+  } else {
+    console.log("json file does not contain proper fields: " + file);
+  }
 });
 
 // send data array to client

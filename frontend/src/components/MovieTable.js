@@ -4,6 +4,8 @@ import { Star } from "react-bootstrap-icons";
 import ReactTextCollapse from "react-text-collapse";
 import axios from "axios";
 require("dotenv").config();
+var Filter = require("bad-words"),
+  filter = new Filter();
 const tmdbApiKey = process.env.REACT_APP_TMDB_API_KEY;
 
 const TEXT_COLLAPSE_OPTIONS = {
@@ -45,6 +47,11 @@ const MovieTable = () => {
     //fetching data from the server
     axios.get("http://localhost:4000").then((response) => {
       setData([...response.data]);
+      // censor naughty words >:(
+      response.data.forEach((movie) => {
+        movie.comment = filter.clean(movie.comment);
+        movie.name = filter.clean(movie.name);
+      });
       // updating each movie with a poster from the tmdb api
       response.data.forEach((movie) => {
         fetchPoster(movie);
@@ -53,7 +60,6 @@ const MovieTable = () => {
     });
   }, [isLoading]);
 
-  // fix bug with loading poster
   return (
     <Table striped bordered hover>
       <thead>

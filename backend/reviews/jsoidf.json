@@ -1,6 +1,6 @@
 {
   "name": "Hector",
   "title": "Random movie that doesn't exist",
-  "rating": "0",
+  "rating": 0.5,
   "comment": "I would love to see this movie if it existed."
 }

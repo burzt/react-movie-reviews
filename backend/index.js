@@ -33,14 +33,18 @@ const jsonsInDir = fs
 jsonsInDir.forEach((file) => {
   const fileData = fs.readFileSync(`./reviews/${file}`, "utf8");
   const jsonData = JSON.parse(fileData.toString());
+
   // sanitizing the data
   if (
     jsonData.name &&
     jsonData.title &&
-    jsonData.rating &&
+    typeof jsonData.rating === "number" &&
+    jsonData.rating >= 0 &&
+    jsonData.rating <= 10 &&
     jsonData.comment &&
     Object.keys(jsonData).length === 4
   ) {
+    jsonData.rating = Math.round(jsonData.rating * 10) / 10;
     data.push(jsonData);
   } else {
     console.log("json file does not contain proper fields: " + file);

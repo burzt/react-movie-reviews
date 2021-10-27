@@ -51,7 +51,9 @@ jsonsInDir.forEach((file) => {
   }
 });
 
+app.use(express.static("../frontend/build"));
+
 // send data array to client
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   res.send(data);
 });

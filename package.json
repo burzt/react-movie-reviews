@@ -6,7 +6,7 @@
   "author": "AaronElam <speztra97@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "cd backend && node index.js",
+    "start": "cd backend && npm install && node index.js",
     "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
   "dependencies": {

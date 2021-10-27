@@ -4,5 +4,9 @@
   "main": "index.js",
   "repository": "https://github.com/AaronElam/favorite-movie-visualizer.git",
   "author": "AaronElam <speztra97@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "cd backend && node index.js",
+    "heroku-postbuild": "cd frontend && yarn install && yarn run build"
+  }
 }

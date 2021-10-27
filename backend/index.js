@@ -21,7 +21,7 @@ const port = process.env.PORT || 4000;
 // });
 
 // Initialize web app on selected port
-app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
+app.listen(port, () => console.log(`Listening at port ${port}`));
 
 const data = [];
 

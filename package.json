@@ -7,6 +7,6 @@
   "license": "MIT",
   "scripts": {
     "start": "cd backend && node index.js",
-    "heroku-postbuild": "cd frontend && yarn install && yarn run build"
+    "heroku-postbuild": "cd frontend && npm install && npm run build"
   }
 }

@@ -1,4 +1,4 @@
-# 🎬Movie Review PR (🎃Hacktoberfest 2021🎃)
+# 🎬React Movie Reviews (🎃Hacktoberfest 2021🎃)
 
 Are you wanting to make your first open-source contribution and don't know where to start? Or maybe you're learning git. Whatever you're doing, the first thing you'll want to do is write a movie review! Wait, write a movie review? Well of course, we all love movies, right? Rate the worst movie you've ever seen or the one that made your eyes flood like the Hoover Dam. Once you've submitted your movie review as a <b>pull request</b>, you can view it, along with all the other contributors' reviews on the website for this repo.
 

@@ -10,6 +10,9 @@
     "heroku-postbuild": "cd frontend && npm install && npm run build"
   },
   "dependencies": {
-    "dotenv": "^10.0.0"
+    "dotenv": "^10.0.0",
+    "express": "*",
+    "body-parser": "*",
+    "bcrypt": "^0.8.5"
   }
 }

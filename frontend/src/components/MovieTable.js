@@ -45,7 +45,7 @@ const MovieTable = () => {
 
   useEffect(() => {
     //fetching data from the server
-    axios.get("https://hacktobermovielist.herokuapp.com/").then((response) => {
+    axios.get("/api").then((response) => {
       setData([...response.data]);
       // censor naughty words >:(
       response.data.forEach((movie) => {

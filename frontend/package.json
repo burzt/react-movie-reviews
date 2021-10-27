@@ -18,7 +18,9 @@
     "react-motion": "^0.5.2",
     "react-scripts": "4.0.3",
     "react-text-collapse": "^0.6.1",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "body-parser": "*",
+    "bcrypt": "*"
   },
   "scripts": {
     "start": "react-scripts start",

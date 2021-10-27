@@ -8,5 +8,8 @@
   "scripts": {
     "start": "cd backend && node index.js",
     "heroku-postbuild": "cd frontend && npm install && npm run build"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0"
   }
 }
